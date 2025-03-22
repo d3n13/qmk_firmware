@@ -1,5 +1,4 @@
-/*
- * Copyright 2021 Quentin LEBASTARD <qlebastard@gmail.com>
+/**
  * Copyright 2021 Charly Delay <charly@codesink.dev> (@0xcharly)
  *
  * This program is free software: you can redistribute it and/or modify
@@ -15,20 +14,23 @@
  * You should have received a copy of the GNU General Public License
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
-
 #pragma once
 
-/* Trackball angle adjustment. */
-#define ROTATIONAL_TRANSFORM_ANGLE -25
+#ifdef VIA_ENABLE
+/* VIA configuration. */
+#    define DYNAMIC_KEYMAP_LAYER_COUNT 6
+#endif // VIA_ENABLE
 
-#define MOUSEKEY_INTERVAL 16
-#define MOUSEKEY_TIME_TO_MAX 50
-#define MOUSEKEY_DELAY 5
-#define MOUSEKEY_MOVE_DELTA 4
+#ifndef __arm__
+/* Disable unused features. */
+#    define NO_ACTION_ONESHOT
+#endif // __arm__
 
-#define MOUSEKEY_WHEEL_DELAY 100
-#define MOUSEKEY_WHEEL_INTERVAL 50
-#define MOUSEKEY_WHEEL_TIME_TO_MAX 100
+/* Charybdis-specific features. */
 
-#define BOTH_SHIFTS_TURNS_ON_CAPS_WORD
-#define CAPS_WORD_INVERT_ON_SHIFT
+#ifdef POINTING_DEVICE_ENABLE
+// Automatically enable the pointer layer when moving the trackball.  See also:
+// - `CHARYBDIS_AUTO_POINTER_LAYER_TRIGGER_TIMEOUT_MS`
+// - `CHARYBDIS_AUTO_POINTER_LAYER_TRIGGER_THRESHOLD`
+// #define CHARYBDIS_AUTO_POINTER_LAYER_TRIGGER_ENABLE
+#endif // POINTING_DEVICE_ENABLE

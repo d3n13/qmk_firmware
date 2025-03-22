@@ -5,9 +5,9 @@
     },
     "features": {
         "bootmagic": true,
-        "mousekey": false,
+        "mousekey": true,
         "extrakey": true,
-        "rgb_matrix": true,
+        "rgb_matrix": false,
         "pointing_device": true
     },
     "rgb_matrix": {
