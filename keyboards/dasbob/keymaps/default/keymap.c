@@ -47,9 +47,10 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
 
 enum dasbob_layers {
   _QWERTY_MAC = 0,
-  _LOWER,
-  _RAISE,
-  _GAMING,
+  _LOWER, // nums_mouse_misc_layer
+  _RAISE, // symbols_arrows_layer
+  _R_MOUSE, // one_handed_mouse_layer
+  _GAMING, 
   _GAMING_2,
   _MACROS_AND_SETUP,
   _SETUP
@@ -63,10 +64,16 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
                                                 LT(_LOWER, KC_DEL), LT(_RAISE, KC_BACKSPACE), LGUI_T(KC_SPC),   LT(_MACROS_AND_SETUP, KC_ENTER), LT(_RAISE, KC_TAB), LT(_RAISE, KC_ESC)
     ),
     [_LOWER] = LAYOUT_split_3x5_3(
-      KC_1,    KC_2,    KC_3,    KC_4,    KC_5,                        KC_6,    KC_7,    KC_8,    KC_9,    KC_0,
-      _______, _______, KC_WH_U, _______, _______,                     _______, KC_BTN1, KC_MS_U, KC_BTN2, KC_VOLU,
-      KC_ESC,  KC_WH_L, KC_WH_D, KC_WH_R, _______,                     _______, KC_MS_L, KC_MS_D, KC_MS_R, KC_VOLD,
-                                 _______, _______, _______,   KC_BTN1, KC_BTN2, TG(_GAMING)
+      KC_1,    KC_2,    KC_3,    KC_4,    KC_5,                        KC_6,         KC_7,    KC_8,    KC_9,    KC_0,
+      _______, _______, KC_WH_U, _______, _______,                     _______,      KC_BTN1, KC_MS_U, KC_BTN2, KC_VOLU,
+      KC_ESC,  KC_WH_L, KC_WH_D, KC_WH_R, _______,                     MO(_R_MOUSE), KC_MS_L, KC_MS_D, KC_MS_R, KC_VOLD,
+                                 _______, _______, _______,   KC_BTN1, KC_BTN2,      TG(_GAMING)
+    ),
+    [_R_MOUSE] = LAYOUT_split_3x5_3(
+        _______, _______, _______, _______, _______,                     _______, _______, _______, _______, _______,
+        _______, _______, _______, _______, _______,                     _______, _______, MS_WHLU, _______, _______,
+        _______, _______, _______, _______, _______,                     _______, MS_WHLL, MS_WHLD, MS_WHLR, _______,
+                                   _______, _______, _______,   _______, _______, _______
     ),
     [_RAISE] = LAYOUT_split_3x5_3(
       KC_PLUS, KC_LCBR, KC_RCBR, KC_ASTR, KC_HASH,                    KC_PERC, KC_EQL,  KC_EXLM, KC_UNDS,  KC_KP_MINUS,
