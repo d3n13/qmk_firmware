@@ -47,6 +47,7 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
 
 enum dasbob_layers {
   _QWERTY_MAC = 0,
+  _GUI_CTRL_WIN,
   _LOWER, // nums_mouse_misc_layer
   _RAISE, // symbols_arrows_layer
   _R_MOUSE, // one_handed_mouse_layer
@@ -62,6 +63,12 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
       LSFT_T(KC_A), LCTL_T(KC_S), LALT_T(KC_D), LGUI_T(KC_F),       LGUI_T(KC_G),                                                                RGUI_T(KC_H),       RGUI_T(KC_J),      RALT_T(KC_K), RCTL_T(KC_L), RSFT_T(KC_SCLN),
       KC_Z,         KC_X,         KC_C,         KC_V,               KC_B,                                                                        KC_N,               KC_M,              KC_COMM,      KC_DOT,       LT(_LOWER, KC_SLSH),
                                                 LT(_LOWER, KC_DEL), LT(_RAISE, KC_BACKSPACE), LGUI_T(KC_SPC),   LT(_MACROS_AND_SETUP, KC_ENTER), LT(_RAISE, KC_TAB), LT(_RAISE, KC_ESC)
+    ),
+    [_GUI_CTRL_WIN] = LAYOUT_split_3x5_3(
+      _______, _______,      _______, _______,      _______,                                _______,      _______,      _______, _______,      _______,
+      _______, LGUI_T(KC_S), _______, LCTL_T(KC_F), LCTL_T(KC_G),                           RCTL_T(KC_H), RCTL_T(KC_J), _______, RGUI_T(KC_L), _______,
+      _______, _______,      _______, _______,      _______,                                _______,      _______,      _______, _______,      _______,
+                                      _______,      _______,      LCTL_T(KC_SPC),  _______, _______,      _______
     ),
     [_LOWER] = LAYOUT_split_3x5_3(
       KC_1,    KC_2,    KC_3,    KC_4,    KC_5,                        KC_6,         KC_7,    KC_8,    KC_9,    KC_0,
@@ -94,16 +101,16 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
                                  _______, _______, _______,    _______, _______, _______
     ),
     [_MACROS_AND_SETUP] = LAYOUT_split_3x5_3(
-      JS_ARROW_FN,    JS_FN,         JS_PROMISE,  _______, _______,                      _______, _______, _______, _______, QK_BOOT,
-      JSX_USE_EFFECT, JSX_USE_STATE, JSX_USE_REF, _______, _______,                      CG_TOGG, _______, _______, _______, _______,
-      _______,        _______,       _______,     _______, _______,                      _______, _______, _______, _______, _______,
+      JS_ARROW_FN,    JS_FN,         JS_PROMISE,  _______, _______,                      _______,           _______, _______, _______, QK_BOOT,
+      JSX_USE_EFFECT, JSX_USE_STATE, JSX_USE_REF, _______, _______,                      TG(_GUI_CTRL_WIN), _______, _______, _______, _______,
+      _______,        _______,       _______,     _______, _______,                      _______,           _______, _______, _______, _______,
                                      _______,     _______, _______,    _______, _______, _______
     ),
     [_SETUP] = LAYOUT_split_3x5_3(
-        _______, _______, _______, _______, QK_BOOT,                      _______, _______, _______, _______, _______,
-        _______, _______, _______, _______, _______,                      _______, _______, _______, _______, _______,
-        _______, _______, _______, CG_TOGG, _______,                      _______, _______, _______, _______, _______,
-                                   _______, _______, _______,    _______, _______, _______
+        _______, _______, _______, _______,           QK_BOOT,             _______, _______, _______, _______, _______,
+        _______, _______, _______, _______,           _______,             _______, _______, _______, _______, _______,
+        _______, _______, _______, TG(_GUI_CTRL_WIN), _______,             _______, _______, _______, _______, _______,
+                                   _______, _______,  _______,    _______, _______, _______
       )
 };
 
