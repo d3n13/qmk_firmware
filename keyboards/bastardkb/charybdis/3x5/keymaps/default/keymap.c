@@ -63,6 +63,7 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
 
 enum charybdis_keymap_layers {
     LAYER_BASE = 0,
+    LAYER_WINDOWS_GUI_CTRL,
     LAYER_SYMBOLS,
     LAYER_NUMERAL,
     LAYER_GAMING,
@@ -96,6 +97,12 @@ enum charybdis_keymap_layers {
     KC_ESC,  KC_WH_L, KC_WH_D, KC_WH_R, KC_CAPS,        TG(LAYER_GAMING), KC_BTN1, KC_BTN2, KC_BTN2, KC_VOLD, \
                       _______, _______, _______,        KC_BTN1, KC_BTN2
 
+#define LAYOUT_LAYER_WINDOWS_GUI_CTRL \
+    _______, _______,      _______, _______,      _______,                           _______,      _______,      _______,      _______, _______, \
+    _______, LGUI_T(KC_S), _______, LCTL_T(KC_F), LCTL_T(KC_G),                      RCTL_T(KC_H), RCTL_T(KC_J), _______, RGUI_T(KC_L), _______, \
+    _______, _______,      _______, _______,      _______,                           _______,      _______,      _______,      _______, _______, \
+                                    _______,      _______, LCTL_T(KC_SPC),  _______, _______
+
 #define LAYOUT_LAYER_SYMBOLS \
       KC_PLUS, KC_LCBR, KC_RCBR, KC_ASTR, KC_HASH,                     KC_PERC, KC_EQL,  KC_EXLM, KC_UNDS,  KC_KP_MINUS, \
       KC_AT,   KC_LPRN, KC_RPRN, KC_DLR,  KC_TILDE,                    KC_GRV,  KC_QUES, KC_UP,   KC_QUOT,  KC_PIPE, \
@@ -117,6 +124,7 @@ enum charybdis_keymap_layers {
 
 const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
   [LAYER_BASE] = LAYOUT_wrapper(HOME_ROW_MOD(LAYOUT_LAYER_BASE)),
+  [LAYER_WINDOWS_GUI_CTRL] = LAYOUT_wrapper(LAYOUT_LAYER_WINDOWS_GUI_CTRL),
   [LAYER_NUMERAL] = LAYOUT_wrapper(LAYOUT_LAYER_NUMERAL),
   [LAYER_SYMBOLS] = LAYOUT_wrapper(LAYOUT_LAYER_SYMBOLS),
   [LAYER_GAMING] = LAYOUT_wrapper(
@@ -132,16 +140,16 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
                                  _______, _______, _______,    _______, _______
    ),
    [LAYER_F_KEYS_AND_SETUP] = LAYOUT_wrapper(
-      KC_F1,  KC_F2,  KC_F3,  KC_F4,   KC_F5,             DPI_MOD, S_D_MOD, _______, _______, QK_BOOT,
-      KC_F6,  KC_F7,  KC_F8,  KC_F9,   KC_F10,            CG_TOGG, _______, _______, _______, _______,
-      KC_F11, KC_F12, KC_F13, KC_F14,  KC_F15,            _______, _______, _______, _______, _______,
-                              _______, _______, _______,  _______, _______
+      KC_F1,  KC_F2,  KC_F3,  KC_F4,   KC_F5,             DPI_MOD,                    S_D_MOD, _______, _______, QK_BOOT,
+      KC_F6,  KC_F7,  KC_F8,  KC_F9,   KC_F10,            TG(LAYER_WINDOWS_GUI_CTRL), _______, _______, _______, _______,
+      KC_F11, KC_F12, KC_F13, KC_F14,  KC_F15,            _______,                    _______, _______, _______, _______,
+                              _______, _______, _______,  _______,                    _______
    ),
    [LAYER_SETUP] = LAYOUT_wrapper(
-      _______, _______, _______, _______, QK_BOOT,                      _______, _______, _______, _______, _______,
-      _______, _______, _______, DPI_MOD, S_D_MOD,                      _______, _______, _______, _______, _______,
-      _______, _______, _______, CG_TOGG, _______,                      _______, _______, _______, _______, _______,
-                                 _______, _______, _______,    _______, _______
+      _______, _______, _______, _______,                    QK_BOOT,                    _______, _______, _______, _______, _______,
+      _______, _______, _______, DPI_MOD,                    S_D_MOD,                    _______, _______, _______, _______, _______,
+      _______, _______, _______, TG(LAYER_WINDOWS_GUI_CTRL), _______,                    _______, _______, _______, _______, _______,
+                                 _______,                    _______, _______,  _______, _______
    ),
 };
 
