@@ -67,7 +67,7 @@ enum charybdis_keymap_layers {
     LAYER_NUMERAL,
     LAYER_GAMING,
     LAYER_GAMING_NUMS,
-    LAYER_MACROS_AND_SETUP,
+    LAYER_F_KEYS_AND_SETUP,
     LAYER_SETUP
 };
 
@@ -81,11 +81,11 @@ enum charybdis_keymap_layers {
 #    define SNIPING KC_NO
 #endif // !POINTING_DEVICE_ENABLE
 
-#define LAYOUT_LAYER_BASE                                                                          \
-    KC_Q, KC_W, KC_E, KC_R, KC_T,       KC_Y, KC_U, KC_I,    KC_O,   KC_P,                         \
-    KC_A, KC_S, KC_D, KC_F, KC_G,       KC_H, KC_J, KC_K,    KC_L,   KC_SCLN,                      \
-    KC_Z, KC_X, KC_C, KC_V, KC_B,       KC_N, KC_M, KC_COMM, KC_DOT, LT(LAYER_NUMERAL, KC_SLSH),   \
-    LT(LAYER_NUMERAL, KC_DEL), BSP_SYM, LGUI_T(KC_SPC),  LT(LAYER_MACROS_AND_SETUP, KC_ENTER), TAB_SYM
+#define LAYOUT_LAYER_BASE                                                                                           \
+    KC_Q, KC_W, KC_E, KC_R, KC_T,                        KC_Y, KC_U, KC_I,    KC_O,   KC_P,                         \
+    KC_A, KC_S, KC_D, KC_F, KC_G,                        KC_H, KC_J, KC_K,    KC_L,   KC_SCLN,                      \
+    KC_Z, KC_X, KC_C, KC_V, KC_B,                        KC_N, KC_M, KC_COMM, KC_DOT, LT(LAYER_NUMERAL, KC_SLSH),   \
+    LT(LAYER_NUMERAL, KC_DEL), BSP_SYM, LGUI_T(KC_SPC),  LT(LAYER_F_KEYS_AND_SETUP, KC_ENTER), TAB_SYM
 
 /** Convenience row shorthands. */
 #define ___________TRANSPARENT_HALF_ROW____________ _______, _______, _______, _______, _______
@@ -131,11 +131,11 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
       ___________TRANSPARENT_HALF_ROW____________,                      _______,  KC_M,    KC_COMM, KC_DOT,  KC_SLSH,
                                  _______, _______, _______,    _______, _______
    ),
-   [LAYER_MACROS_AND_SETUP] = LAYOUT_wrapper(
-      JS_ARROW_FN,    JS_FN,         JS_PROMISE,  _______, _______,                      DPI_MOD, S_D_MOD, _______, _______, QK_BOOT,
-      JSX_USE_EFFECT, JSX_USE_STATE, JSX_USE_REF, _______, _______,                      CG_TOGG, _______, _______, _______, _______,
-      _______,        _______,       _______,     _______, _______,                      _______, _______, _______, _______, _______,
-                                     _______,     _______, _______,    _______, _______
+   [LAYER_F_KEYS_AND_SETUP] = LAYOUT_wrapper(
+      KC_F1,  KC_F2,  KC_F3,  KC_F4,   KC_F5,             DPI_MOD, S_D_MOD, _______, _______, QK_BOOT,
+      KC_F6,  KC_F7,  KC_F8,  KC_F9,   KC_F10,            CG_TOGG, _______, _______, _______, _______,
+      KC_F11, KC_F12, KC_F13, KC_F14,  KC_F15,            _______, _______, _______, _______, _______,
+                              _______, _______, _______,  _______, _______
    ),
    [LAYER_SETUP] = LAYOUT_wrapper(
       _______, _______, _______, _______, QK_BOOT,                      _______, _______, _______, _______, _______,
