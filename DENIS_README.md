@@ -1,9 +1,9 @@
 # Hey, me from the future. This is how I flashed the keyboards step by step
 
-1. Install the QMK (Source https://qmk.fm/guide)
+1. Install the QMK (Source https://docs.qmk.fm/newbs_getting_started)
 
 ```console
-brew install qmk/qmk/qmk
+curl -fsSL https://install.qmk.fm | sh
 ```
 
 2. Run the setup script (Source https://qmk.fm/guide)
