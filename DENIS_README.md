@@ -30,7 +30,9 @@ qmk setup d3n13/qmk_firmware
 
 > On top of that, I changed some files to achieve desired layout/behaviour
 
-> Then I run `qmk flash -c -kb bastardkb/charybdis/3x5/v2/splinky_3 -km default` on both sides, while making sure I only connect one half at a time via USB-C cable, and without connecting the other half via TRRS until I'm certaing that both sides run the same version of QMK with correct firmware
+> Upstream removed the `v2/splinky_3` target (qmk/qmk_firmware#25488). The Splinky is now built as the `elitec` board plus the `rp2040_ce` converter. My former `splinky_3` tweaks (MASTER_RIGHT, mouse keys, combos, caps word, RGB off) live in `keymaps/default/config.h` and `rules.mk`. Don't use the old `v2/splinky_3` name: it's now an alias for plain `elitec` and builds AVR firmware that won't flash.
+
+> Then I run `qmk flash -c -kb bastardkb/charybdis/3x5/elitec -km default -e CONVERT_TO=rp2040_ce` on both sides, while making sure I only connect one half at a time via USB-C cable, and without connecting the other half via TRRS until I'm certaing that both sides run the same version of QMK with correct firmware
 
 ## Dasbob
 

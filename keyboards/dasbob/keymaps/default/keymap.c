@@ -72,9 +72,9 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
     ),
     [_LOWER] = LAYOUT_split_3x5_3(
       KC_1,    KC_2,    KC_3,    KC_4,    KC_5,                        KC_6,         KC_7,    KC_8,    KC_9,    KC_0,
-      _______, _______, KC_WH_U, _______, _______,                     _______,      KC_BTN1, KC_MS_U, KC_BTN2, KC_VOLU,
-      KC_ESC,  KC_WH_L, KC_WH_D, KC_WH_R, _______,                     MO(_R_MOUSE), KC_MS_L, KC_MS_D, KC_MS_R, KC_VOLD,
-                                 _______, _______, _______,   KC_BTN1, KC_BTN2,      TG(_GAMING)
+      _______, _______, MS_WHLU, _______, _______,                     _______,      MS_BTN1, MS_UP, MS_BTN2, KC_VOLU,
+      KC_ESC,  MS_WHLL, MS_WHLD, MS_WHLR, _______,                     MO(_R_MOUSE), MS_LEFT, MS_DOWN, MS_RGHT, KC_VOLD,
+                                 _______, _______, _______,   MS_BTN1, MS_BTN2,      TG(_GAMING)
     ),
     [_R_MOUSE] = LAYOUT_split_3x5_3(
         _______, _______, _______, _______, _______,                     _______, _______, _______, _______, _______,
